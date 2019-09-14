@@ -1,0 +1,22 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "./node_modules/.bin/eslint index.js --fix && ./node_modules/.bin/prettier --config ./.prettierrc index.js --write"
+  },
+  "author": "Michael",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "prettier": "^1.18.2"
+  }
+}
