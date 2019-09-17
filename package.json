@@ -5,18 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "./node_modules/.bin/eslint index.js --fix && ./node_modules/.bin/prettier --config ./.prettierrc index.js --write"
+    "format": "./node_modules/.bin/prettier --config ./.prettierrc index.js --write && node bin/glob-ls.js 'views/**/*.ejs' | xargs node_modules/.bin/html-beautify -r --config ./.jsbeautifyrc",
+    "fix": "./node_modules/.bin/eslint index.js --fix"
   },
   "author": "Michael",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "eslint": "^6.3.0",
+    "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "js-beautify": "^1.10.2",
     "prettier": "^1.18.2"
   }
 }
