@@ -4,45 +4,78 @@ const app = express();
 
 const bodyparser = require('body-parser');
 
-const campgrounds = [
-  {
-    name: 'Salmon Creek',
-    img: 'https://unsplash.com/photos/DgSnapS1itA/download?force=true',
-  },
-  {
-    name: 'Granite Hill',
-    img: 'https://unsplash.com/photos/pSaEMIiUO84/download?force=true',
-  },
-  {
-    name: 'Mountain Goat`s Rest',
-    img: 'https://unsplash.com/photos/ebnlHkqfUHY/download?force=true',
-  },
-];
+const mongoose = require('mongoose');
+
+// MONGODB SETUP
+
+mongoose.connect('mongodb://localhost/yelp_camp', {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+
+// MONGOOSE MODELS
+
+const campgroundSchema = new mongoose.Schema({
+  name: String,
+  img: String,
+  description: String,
+});
+
+const campgroundModel = mongoose.model('Campground', campgroundSchema);
+
+// EXPRESS SETUP
 
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
+
+// ROUTING
 
 app.get('/', (req, res) => {
   res.render('landing');
 });
 
 app.get('/campgrounds', (req, res) => {
-  res.render('campgrounds', { campgrounds });
+  campgroundModel.find({}, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', { campgrounds: result });
+    }
+  });
 });
 
 app.get('/campgrounds/new', (req, res) => {
   res.render('new');
 });
 
+app.get('/campgrounds/:id', (req, res) => {
+  const { id } = req.params;
+  campgroundModel.findById(id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('show', { campground: result });
+    }
+  });
+});
+
 app.post('/campgrounds', (req, res) => {
   const { name } = req.body;
   const { img } = req.body;
-  const newCampground = { name, img };
-  campgrounds.push(newCampground);
-  res.redirect('/campgrounds');
+  const { description } = req.body;
+  const newCampground = { name, img, description };
+  campgroundModel.create(newCampground, err => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/campgrounds');
+    }
+  });
 });
 
-app.listen(3000, () => {
-  console.log('Listening on 3000');
+app.listen(80, () => {
+  console.log('Listening on 80');
 });
