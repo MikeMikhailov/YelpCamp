@@ -2,33 +2,29 @@
 
 <div class="container">
   <h1 class="text-center mb-4">Create a new Campground</h1>
-
-  <form action="/campgrounds" method="POST">
-    <div class="row justify-content-center">
-      <div class="form-group col-md-5" action="/campgrounds" method="POST">
+  <div class="row flex-column justify-content-start align-items-center">
+    <form action="/campgrounds" class="col-md-5" method="POST">
+      <div class="form-group" action="/campgrounds" method="POST">
         <label for="name">Name</label>
         <input type="text" class="form-control" name="name" id="name"
           placeholder="Enter name">
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="form-group col-md-5">
+      <div class="form-group">
         <label for="img">Image URL</label>
         <input type="text" class="form-control" name="img" id="img"
           placeholder="Enter Image URL">
       </div>
-    </div>
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-5">
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      <div class="form-group">
+        <label for="description">Campground Description</label>
+        <textarea type="text" class="form-control" name="description"
+          id="description" rows="3"
+          placeholder="Enter Campground Description"></textarea>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <a href="/campgrounds" class="text-left">Go Back</a>
-      </div>
-    </div>
-  </form>
+      <button type="submit"
+        class="btn btn-primary btn-block mb-2">Submit</button>
+      <a href="/campgrounds" class="text-left">Go Back</a>
+    </form>
+  </div>
 </div>
 
 <% include ./partials/footer %>
