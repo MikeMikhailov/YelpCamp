@@ -17,5 +17,6 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
+    'no-underscore-dangle': [2, { "allow": ['_id'] }]
   },
 };
