@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 <h1>
   This is a Show Page
 </h1>
@@ -10,6 +10,7 @@
   <%= campground.description %>
 </p>
 <div>
+  <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-primary">Add New Comment</a>
   <% campground.comments.forEach(comment => { %>
   <h1>
     <%= comment.author %>
@@ -19,4 +20,4 @@
   </p>
   <% }); %>
 </div>
-<% include ./partials/footer %>
+<% include ../partials/footer %>
