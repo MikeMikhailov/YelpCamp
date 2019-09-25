@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "./node_modules/.bin/prettier --config ./.prettierrc index.js --write && node bin/glob-ls.js 'views/**/*.ejs' | xargs node_modules/.bin/html-beautify -r --config ./.jsbeautifyrc",
-    "fix": "./node_modules/.bin/eslint index.js --fix"
+    "format": "./node_modules/.bin/prettier --config ./.prettierrc index.js seeds.js --write && node bin/glob-ls.js 'views/**/*.ejs' | xargs node_modules/.bin/html-beautify -r --config ./.jsbeautifyrc",
+    "fix": "./node_modules/.bin/eslint index.js seeds.js --fix"
   },
   "author": "Michael",
   "license": "ISC",

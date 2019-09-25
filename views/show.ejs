@@ -9,4 +9,14 @@
 <p>
   <%= campground.description %>
 </p>
+<div>
+  <% campground.comments.forEach(comment => { %>
+  <h1>
+    <%= comment.author %>
+  </h1>
+  <p>
+    <%= comment.text %>
+  </p>
+  <% }); %>
+</div>
 <% include ./partials/footer %>
