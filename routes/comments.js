@@ -38,8 +38,12 @@ router.post('/', isLoggedIn, (req, res) => {
         if (addCommentErr) {
           console.log(addCommentErr);
         } else {
+          comment.author.id = req.user._id;
+          comment.author.username = req.user.username;
+          comment.save();
           campground.comments.push(comment);
           campground.save();
+          console.log(comment)
           res.redirect(`/campgrounds/${campground._id}`);
         }
       });

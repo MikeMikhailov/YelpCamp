@@ -6,11 +6,6 @@
     <form action="/campgrounds/<%= campground._id %>/comments" class="col-md-5"
       method="POST">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" name="comment[author]" id="name"
-          placeholder="Enter Your Name">
-      </div>
-      <div class="form-group">
         <label for="text">Comment Text</label>
         <textarea type="text" class="form-control" name="comment[text]"
           id="text" rows="3" placeholder="Enter comment"></textarea>

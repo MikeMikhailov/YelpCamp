@@ -41,31 +41,31 @@ module.exports = function seedDB() {
         } else {
           console.log('Removed Playgrounds and Comments');
           // ADD NEW CAMPGROUNDS
-          campgroundData.forEach(campground => {
-            Campground.create(campground, (addErr, addedCampground) => {
-              if (addErr) {
-                console.log(addErr);
-              } else {
-                console.log('Added a playground');
-                // ADD COMMENTS
-                Comment.create(
-                  {
-                    text: 'This Place is Amazing',
-                    author: 'Homer',
-                  },
-                  (addCommentErr, addedComment) => {
-                    if (addErr) {
-                      console.log(addErr);
-                    } else {
-                      addedCampground.comments.push(addedComment);
-                      addedCampground.save();
-                      console.log('Added a comment');
-                    }
-                  },
-                );
-              }
-            });
-          });
+        //   campgroundData.forEach(campground => {
+        //     Campground.create(campground, (addErr, addedCampground) => {
+        //       if (addErr) {
+        //         console.log(addErr);
+        //       } else {
+        //         console.log('Added a playground');
+        //         // ADD COMMENTS
+        //         Comment.create(
+        //           {
+        //             text: 'This Place is Amazing',
+        //             author: 'Homer',
+        //           },
+        //           (addCommentErr, addedComment) => {
+        //             if (addErr) {
+        //               console.log(addErr);
+        //             } else {
+        //               addedCampground.comments.push(addedComment);
+        //               addedCampground.save();
+        //               console.log('Added a comment');
+        //             }
+        //           },
+        //         );
+        //       }
+        //     });
+        //   });
         }
       });
     }

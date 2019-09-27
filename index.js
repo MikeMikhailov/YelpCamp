@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const expressSession = require('express-session');
-const seedDB = require('./seeds.js');
+// const seedDB = require('./seeds.js');
 
 const User = require('./models/user');
 
@@ -31,7 +31,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/public`));
 app.set('view engine', 'ejs');
 
-seedDB();
+// seedDB();
 
 // PASSPORT SETUP
 
