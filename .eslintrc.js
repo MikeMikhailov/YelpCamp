@@ -17,6 +17,7 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
-    'no-underscore-dangle': [2, { "allow": ['_id'] }]
+    'no-underscore-dangle': [2, { "allow": ['_id'] }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
 };

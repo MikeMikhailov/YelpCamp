@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "./node_modules/.bin/prettier --config ./.prettierrc index.js seeds.js --write && node bin/glob-ls.js 'views/**/*.ejs' | xargs node_modules/.bin/html-beautify -r --config ./.jsbeautifyrc",
-    "fix": "./node_modules/.bin/eslint index.js seeds.js --fix"
+    "tidy": "npm run format && npm run fix && npm run formatJS",
+    "format": "npm run formatJS && npm run formatEJS",
+    "formatJS": "node bin/glob-ls.js './**/*.js' | grep -v -f .gitignore | xargs ./node_modules/.bin/prettier --config ./.prettierrc --write",
+    "formatEJS": "node bin/glob-ls.js './views/**/*.ejs' | xargs node_modules/.bin/html-beautify -r --config ./.jsbeautifyrc",
+    "fix": "node bin/glob-ls.js './**/*.js' | grep -v -f .gitignore | xargs ./node_modules/.bin/eslint --fix -c './.eslintrc.js'"
   },
   "author": "Michael",
   "license": "ISC",
@@ -20,6 +23,7 @@
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "glob": "^7.1.4",
     "js-beautify": "^1.10.2",
     "prettier": "^1.18.2"
   }
