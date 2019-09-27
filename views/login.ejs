@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+
+<div class="container">
+  <h1 class="text-center mb-4">Log In</h1>
+  <div class="row flex-column justify-content-start align-items-center">
+    <form action="/login" class="col-md-5" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username"
+          placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password"
+          id="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mb-2">Log
+        In</button>
+      <div class="d-flex justify-content-between">
+        <a href="/campgrounds" class="text-left">Go Back</a>
+        <a href="/register" class="text-right">Haven`t registered yet?</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<% include ./partials/footer %>
