@@ -16,11 +16,10 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    'no-console': 0,
+    'no-console': 1,
     'no-underscore-dangle': ["error", { "allow": ['_id'] }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     'no-unused-vars': 1,
     'no-param-reassign': ["error", { "props": false }],
-    'consistent-return': 0
   },
 };

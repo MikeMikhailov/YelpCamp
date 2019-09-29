@@ -43,3 +43,24 @@
       </div>
     </div>
   </nav>
+  <% if(successMessage != '') { %>
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+      <%= successMessage %>
+    </div>
+  </div>
+  <% } %>
+  <% if(warningMessage != '') { %>
+  <div class="container">
+    <div class="alert alert-warning" role="alert">
+      <%= warningMessage %>
+    </div>
+  </div>
+  <% } %>
+  <% if(errorMessage != '') { %>
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  </div>
+  <% } %>

@@ -7,42 +7,52 @@ const Comment = require('../models/comment');
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
-    return next();
+    next();
+  } else {
+    req.flash('error', 'Please Log In');
+    res.redirect('/login');
   }
-  res.redirect('/login');
 }
 
 function isCommentOwner(req, res, next) {
   if (req.isAuthenticated()) {
     Comment.findById(req.params.comment_id, (commentFindErr, foundComment) => {
-      if (commentFindErr) {
-        console.log(commentFindErr);
-      }
-      if (foundComment.author.id.equals(req.user._id)) {
-        next();
+      if (commentFindErr || !foundComment) {
+        req.flash('error', 'Comment not found');
+        res.redirect(`/campgrounds/${req.params.id}`);
       } else {
-        res.redirect('back');
+        if (foundComment.author.id.equals(req.user._id)) {
+          next();
+        } else {
+          req.flash('warning', 'You are not authorised to do that');
+          res.redirect(`/campgrounds/${req.params.id}`);
+        }
       }
     });
   } else {
-    res.redirect('back');
+    req.flash('error', 'Please Log In');
+    res.redirect('/login');
   }
 }
 
 function isCampgroundOwner(req, res, next) {
   if (req.isAuthenticated()) {
     Campground.findById(req.params.id, (campgroundFindErr, foundCampground) => {
-      if (campgroundFindErr) {
-        res.redirect('back');
-      }
-      if (foundCampground.author.id.equals(req.user._id)) {
-        next();
+      if (campgroundFindErr || !foundCampground) {
+        req.flash('error', 'Campground not found');
+        res.redirect('/campgrounds');
       } else {
-        res.redirect('back');
+        if (foundCampground.author.id.equals(req.user._id)) {
+          next();
+        } else {
+          req.flash('warning', 'You are not authorised to do that');
+          res.redirect(`/campgrounds/${req.params.id}`);
+        }
       }
     });
   } else {
-    res.redirect('back');
+    req.flash('error', 'Please Log In');
+    res.redirect('/login');
   }
 }
 
