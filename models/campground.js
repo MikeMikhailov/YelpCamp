@@ -4,6 +4,7 @@ const campgroundSchema = new mongoose.Schema({
   name: String,
   img: String,
   description: String,
+  price: Number,
   comments: [
     {
       type: mongoose.Schema.Types.ObjectID,

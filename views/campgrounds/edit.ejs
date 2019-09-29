@@ -16,6 +16,12 @@
           placeholder="Enter Image URL" value="<%= campground.img %>">
       </div>
       <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" step=".01" min="0.01" class="form-control"
+          name="campground[price]" id="price"
+          placeholder="Enter Price for 1 night">
+      </div>
+      <div class="form-group">
         <label for="description">Campground Description</label>
         <textarea type="text" class="form-control"
           name="campground[description]" id="description" rows="3"

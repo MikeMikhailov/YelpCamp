@@ -1,15 +1,81 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html>
 
-<div class="container">
-  <h1>
-    Landing Page
-  </h1>
+<head>
+  <title>YelpCamp</title>
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/landing.css">
+</head>
 
-  <p>
-    Welcome to YelpCamp!
-  </p>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">YelpCamp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <a href="/campgrounds">View All Campgrounds</a>
-</div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <% if(!currentUser){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Sign Up</a>
+          </li>
+          <% } else {%>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Signed as <%= currentUser.username %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<% include ./partials/footer %>
+  <% if(successMessage != '') { %>
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+      <%= successMessage %>
+    </div>
+  </div>
+  <% } %>
+  <% if(warningMessage != '') { %>
+  <div class="container">
+    <div class="alert alert-warning" role="alert">
+      <%= warningMessage %>
+    </div>
+  </div>
+  <% } %>
+  <% if(errorMessage != '') { %>
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  </div>
+  <% } %>
+
+  <div id="landing-header">
+    <h1>Welcome to YelpCamp!</h1>
+    <a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+  </div>
+
+  <ul class="slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <% include partials/footer %>

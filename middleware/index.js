@@ -20,13 +20,11 @@ function isCommentOwner(req, res, next) {
       if (commentFindErr || !foundComment) {
         req.flash('error', 'Comment not found');
         res.redirect(`/campgrounds/${req.params.id}`);
+      } else if (foundComment.author.id.equals(req.user._id)) {
+        next();
       } else {
-        if (foundComment.author.id.equals(req.user._id)) {
-          next();
-        } else {
-          req.flash('warning', 'You are not authorised to do that');
-          res.redirect(`/campgrounds/${req.params.id}`);
-        }
+        req.flash('warning', 'You are not authorised to do that');
+        res.redirect(`/campgrounds/${req.params.id}`);
       }
     });
   } else {
@@ -41,13 +39,11 @@ function isCampgroundOwner(req, res, next) {
       if (campgroundFindErr || !foundCampground) {
         req.flash('error', 'Campground not found');
         res.redirect('/campgrounds');
+      } else if (foundCampground.author.id.equals(req.user._id)) {
+        next();
       } else {
-        if (foundCampground.author.id.equals(req.user._id)) {
-          next();
-        } else {
-          req.flash('warning', 'You are not authorised to do that');
-          res.redirect(`/campgrounds/${req.params.id}`);
-        }
+        req.flash('warning', 'You are not authorised to do that');
+        res.redirect(`/campgrounds/${req.params.id}`);
       }
     });
   } else {

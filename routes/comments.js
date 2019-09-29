@@ -12,7 +12,7 @@ const router = express.Router({ mergeParams: true });
 
 router.get('/new', middleware.isLoggedIn, (req, res) => {
   Campground.findById(req.params.id, (campgroundFindErr, foundCampground) => {
-    if (campgroundFindErr  || !foundCampground) {
+    if (campgroundFindErr || !foundCampground) {
       req.flash('error', 'Campground not found');
       res.redirect('/campgrounds');
     } else {
@@ -46,10 +46,11 @@ router.get('/:comment_id/edit', middleware.isCommentOwner, (req, res) => {
 router.post('/', middleware.isLoggedIn, (req, res) => {
   const { id } = req.params;
   Campground.findById(id, (campgroundFindErr, foundCampground) => {
-    if (campgroundFindErr  || !foundCampground) {
+    if (campgroundFindErr || !foundCampground) {
       req.flash('error', 'Campground not found');
       res.redirect('/campgrounds');
     } else {
+      req.body.comment.text = req.body.comment.text.replace(/(\r\n|\n|\r)/gm, '');
       Comment.create(req.body.comment, (commentCreateErr, createdComment) => {
         if (commentCreateErr) {
           req.flash('error', 'Couldn`t create comment');
@@ -68,6 +69,7 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 });
 
 router.put('/:comment_id', middleware.isCommentOwner, (req, res) => {
+  req.body.comment.text = req.body.comment.text.replace(/(\r\n|\n|\r)/gm, '');
   Comment.findByIdAndUpdate(
     req.params.comment_id,
     req.body.comment,
