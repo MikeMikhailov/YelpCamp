@@ -17,9 +17,10 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
-    'no-underscore-dangle': [2, { "allow": ['_id'] }],
+    'no-underscore-dangle': ["error", { "allow": ['_id'] }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     'no-unused-vars': 1,
-    'consistent-return': 1
+    'no-param-reassign': ["error", { "props": false }],
+    'consistent-return': 0
   },
 };
