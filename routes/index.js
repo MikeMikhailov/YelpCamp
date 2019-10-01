@@ -42,6 +42,8 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/campgrounds',
     failureRedirect: '/login',
+    failureFlash: true,
+    successFlash: 'Succesfully logged in',
   }),
 );
 

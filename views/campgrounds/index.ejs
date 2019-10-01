@@ -6,6 +6,15 @@
     <div class="container">
       <h1>Welcome to YelpCamp</h1>
       <p>View our hand-picked campgrounds from all over the world!</p>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="searchInput">Search Campgrounds</label>
+            <input type="text" class="form-control" id="searchInput"
+              placeholder="Start Typing...">
+          </div>
+        </div>
+      </div>
       <p>
         <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
       </p>
@@ -27,5 +36,7 @@
   </div>
 
 </div>
+
+<script src="/js/search.js"></script>
 
 <% include ../partials/footer %>

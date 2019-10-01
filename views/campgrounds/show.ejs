@@ -36,9 +36,10 @@
           <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-success btn-sm">Add New Comment</a>
         </div>
         <div class="card-body">
+          <% if(campground.comments.length !== 0) { %>
           <% campground.comments.forEach(comment => { %>
           <div class="row mb-2">
-            <div class="col-md-12 ">
+            <div class="col-12 ">
               <div class="d-flex justify-content-between">
                 <h4><%= comment.author.username %></h4>
                 <p>10 days ago</p>
@@ -58,6 +59,13 @@
             </div>
           </div>
           <% }); %>
+          <% } else { %>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+              <h3>No comments Yet</h3>
+            </div>
+          </div>
+          <% } %>
         </div>
       </div>
     </div>
