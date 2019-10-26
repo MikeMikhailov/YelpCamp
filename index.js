@@ -19,16 +19,12 @@ const app = express();
 
 // MONGODB SETUP
 
-mongoose.connect(
-  'mongodb+srv://Michael:RDUpFndWhM6xwLnrcXxUmrgu@yelpcamp-okisa.gcp.mongodb.n'
-    + 'et/test?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  },
-);
+mongoose.connect(process.env.YELPCAMP_DB_URL, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 // EXPRESS SETUP
 
