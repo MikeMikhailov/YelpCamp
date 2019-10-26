@@ -19,7 +19,7 @@ const app = express();
 
 // MONGODB SETUP
 
-mongoose.connect('mongodb://localhost/yelp_camp', {
+mongoose.connect('mongodb+srv://Michael:RDUpFndWhM6xwLnrcXxUmrgu@yelpcamp-okisa.gcp.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useCreateIndex: true,
