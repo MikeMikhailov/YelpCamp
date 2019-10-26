@@ -9,7 +9,8 @@
     "format": "npm run formatJS && npm run formatEJS",
     "formatJS": "node bin/glob-ls.js './**/*.js' | grep -v -f .gitignore | xargs ./node_modules/.bin/prettier --config ./.prettierrc --write",
     "formatEJS": "node bin/glob-ls.js './views/**/*.ejs' | xargs node_modules/.bin/html-beautify -r --config ./.jsbeautifyrc",
-    "fix": "node bin/glob-ls.js './**/*.js' | grep -v -f .gitignore | xargs ./node_modules/.bin/eslint --fix -c './.eslintrc.js'"
+    "fix": "node bin/glob-ls.js './**/*.js' | grep -v -f .gitignore | xargs ./node_modules/.bin/eslint --fix -c './.eslintrc.js'",
+    "start": "node index.js"
   },
   "author": "Michael",
   "license": "ISC",
