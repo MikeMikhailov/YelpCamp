@@ -20,7 +20,8 @@ const app = express();
 // MONGODB SETUP
 
 mongoose.connect(
-  'mongodb+srv://Michael:RDUpFndWhM6xwLnrcXxUmrgu@yelpcamp-okisa.gcp.mongodb.net/test?retryWrites=true&w=majority',
+  'mongodb+srv://Michael:RDUpFndWhM6xwLnrcXxUmrgu@yelpcamp-okisa.gcp.mongodb.n'
+    + 'et/test?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -42,7 +43,9 @@ app.set('view engine', 'ejs');
 app.use(
   expressSession({
     secret:
-      'CJvGwWXcQzBAlaVj5Ym1LcbHFxQwum4OyAbKsnojRfqvv3uNUBi5x5Tq8pSnuuZgtbKgjo3iu7Iar7xKfE3hJ0J41pes28MPGAVR5mLWdfVXnj5bZtsA96GEStoYwO68UE8nRsAn6F4WX8q8PCYZpC7tL0c1PnKtUnUNXHXeDX1UYILnGOLTplxE68U7NEIGbkjvZtR',
+      'CJvGwWXcQzBAlaVj5Ym1LcbHFxQwum4OyAbKsnojRfqvv3uNUBi5x5Tq8pSnuuZgtbKgjo3'
+      + 'iu7Iar7xKfE3hJ0J41pes28MPGAVR5mLWdfVXnj5bZtsA96GEStoYwO68UE8nRsAn6F4W'
+      + 'X8q8PCYZpC7tL0c1PnKtUnUNXHXeDX1UYILnGOLTplxE68U7NEIGbkjvZtR',
     resave: false,
     saveUninitialized: false,
   }),
