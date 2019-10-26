@@ -19,12 +19,15 @@ const app = express();
 
 // MONGODB SETUP
 
-mongoose.connect('mongodb+srv://Michael:RDUpFndWhM6xwLnrcXxUmrgu@yelpcamp-okisa.gcp.mongodb.net/test?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  'mongodb+srv://Michael:RDUpFndWhM6xwLnrcXxUmrgu@yelpcamp-okisa.gcp.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  },
+);
 
 // EXPRESS SETUP
 
@@ -39,9 +42,7 @@ app.set('view engine', 'ejs');
 app.use(
   expressSession({
     secret:
-      'CJvGwWXcQzBAlaVj5Ym1LcbHFxQwum4OyAbKsnojRfqvv3uNUBi5x5Tq8pSnuuZgtbKg' +
-      'jo3iu7Iar7xKfE3hJ0J41pes28MPGAVR5mLWdfVXnj5bZtsA96GEStoYwO68UE8nRsAn6F4WX8q8' +
-      'PCYZpC7tL0c1PnKtUnUNXHXeDX1UYILnGOLTplxE68U7NEIGbkjvZtR',
+      'CJvGwWXcQzBAlaVj5Ym1LcbHFxQwum4OyAbKsnojRfqvv3uNUBi5x5Tq8pSnuuZgtbKgjo3iu7Iar7xKfE3hJ0J41pes28MPGAVR5mLWdfVXnj5bZtsA96GEStoYwO68UE8nRsAn6F4WX8q8PCYZpC7tL0c1PnKtUnUNXHXeDX1UYILnGOLTplxE68U7NEIGbkjvZtR',
     resave: false,
     saveUninitialized: false,
   }),
@@ -69,6 +70,4 @@ app.use('/campgrounds/:id/comments', commentRoutes);
 
 // LISTENING
 
-app.listen(80, () => {
-  console.log('Listening on 80');
-});
+app.listen(process.env.PORT === undefined ? 80 : process.env.PORT);
