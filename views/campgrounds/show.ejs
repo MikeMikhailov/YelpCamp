@@ -17,7 +17,9 @@
           <div class="card-subtitle d-flex justify-content-between">
             <h6 class="text-muted">Added by <%= campground.author.username %>
             </h6>
-            <h6 class="text-muted"><%= campground.price %>$/night</h6>
+            <h6 class="text-muted">
+              <%= campground.price === 0 ? 'Free' : `${campground.price}$/night`%>
+            </h6>
           </div>
           <p class="card-text"><%= campground.description %></p>
           <div class="d-flex">
