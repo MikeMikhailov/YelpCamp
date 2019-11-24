@@ -25,11 +25,12 @@ router.post('/register', (req, res) => {
     if (createErr) {
       req.flash('error', createErr.message);
       res.redirect('/register');
+    } else {
+      passport.authenticate('local')(req, res, () => {
+        req.flash('success', `Thanks for joining us! Welcome, ${createdUser.username}`);
+        res.redirect('/campgrounds');
+      });
     }
-    passport.authenticate('local')(req, res, () => {
-      req.flash('success', `Thanks for joining us! Welcome, ${createdUser.username}`);
-      res.redirect('/campgrounds');
-    });
   });
 });
 
