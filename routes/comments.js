@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // REQUIRES
 
 const express = require('express');
